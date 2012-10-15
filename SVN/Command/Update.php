@@ -47,7 +47,7 @@
  * @link      http://pear.php.net/package/VersionControl_SVN
  */
 
-require_once 'VersionControl/SVN/Command.php';
+
 
 /**
  * Subversion Update command manager class

@@ -47,8 +47,6 @@
  * @link      http://pear.php.net/package/VersionControl_SVN
  */
 
-require_once 'VersionControl/SVN/Exception.php';
-
 /**
  * Note on the fetch modes -- as the project matures, more of these modes
  * will be implemented. At the time of initial release only the 
