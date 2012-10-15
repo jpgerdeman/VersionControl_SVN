@@ -53,10 +53,13 @@
     object for easy navigation.
 */
 
-error_reporting(E_ALL);
+error_reporting(E_ALL|E_STRICT);
 ini_set('display_errors', 'on');
-
-require_once 'VersionControl/SVN.php';
+// If a psr-0 complilant autoloader is used add the namespace "VersionControl" to point 
+// at the root directory of this package.
+//
+// a bootstrap file is included if no Autoloader is included.
+require_once '../../bootstrap.php';
 
 // Default options
 $base_url = 'https://www.killersoft.com/svn/packages/pear/VersionControl_SVN/trunk';
