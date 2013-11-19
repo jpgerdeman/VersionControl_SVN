@@ -8,21 +8,14 @@
 VersionControl_SVN is a simple OO-style interface for Subversion,
 the free/open-source version control system.
 
-VersionControl_SVN can be used to manage trees of source code, 
-text files, image files -- just about any 
-collection of files.
-
 Some of VersionControl_SVN&apos;s features:
 
-* Full support of svn command-line client&apos;s 
-  subcommands.
-* Use of flexible error reporting provided by
-  PEAR_ErrorStack.
+* Full support of svn command-line client&apos;s  subcommands.
+* Exception handling.
 * Multi-object factory.
-* Source fully documented with PHPDoc.
+* Source fully documented with phpDocumentor.
 * Stable, extensible interface.
-* Collection of helpful quickstart examples and
-  tutorials.
+* Collection of helpful quickstart examples and tutorials.
 
 What can be done with VersionControl_SVN?
 
@@ -39,7 +32,7 @@ Note: Requires a Subversion installation.
 Subverison is available from
 http://subversion.tigris.org/
 
-VersionControl_SVN is tested against Subversion 1.6.3</description>
+VersionControl_SVN is tested against Subversion 1.6 and 1.7.</description>
  <lead>
   <name>Clay Loveless</name>
   <user>clay</user>
@@ -52,11 +45,11 @@ VersionControl_SVN is tested against Subversion 1.6.3</description>
   <email>mrook@php.net</email>
   <active>yes</active>
  </lead>
- <date>2011-10-14</date>
- <time>21:42:55</time>
+ <date>2013-02-09</date>
+ <time>12:19:00</time>
  <version>
-  <release>0.4.0</release>
-  <api>0.4.0</api>
+  <release>0.5.1</release>
+  <api>0.5.0</api>
  </version>
  <stability>
   <release>alpha</release>
@@ -64,14 +57,9 @@ VersionControl_SVN is tested against Subversion 1.6.3</description>
  </stability>
  <license>BSD License</license>
  <notes>
-* Fix Bug #16639: PHP &quot;Error return value of new by reference is deprecated&quot; [mrook]
- * Fix Bug #17335: E_DEPRECATED is triggered [mrook]
- * Fix Bug #18010: Determine svn location automatically [mrook]
- * Fix Bug #18472: Need to add --non-interactive [mrook]
- * Fix Bug #18713: Move Command doesn&apos;t need a Message [mrook]
- * Fix Bug #18715: Copy command requires message switch [mrook]
- * Implement Feature #18028: Better support for --ignore-externals option [mrook]
- * Implement Feature #18623: Add xml output switch [mrook]
+* Fix Bug #19776: switch handling argument injection bug [mrook]
+ * Fix Bug #19795: escapeshellarg for switches [mrook]
+ * Fix Bug #19813: Typo in diff command switch &quot;summarize&quot; [mrook]
  </notes>
  <contents>
   <dir name="/">
@@ -89,131 +77,133 @@ VersionControl_SVN is tested against Subversion 1.6.3</description>
     </dir> <!-- /docs/tutorials -->
     <file baseinstalldir="/VersionControl" name="LICENSE" role="doc" />
    </dir> <!-- /docs -->
-   <dir name="SVN">
-    <dir name="Parser">
-     <dir name="XML">
-      <file baseinstalldir="/VersionControl" name="Info.php" role="php">
+   <dir name="VersionControl">
+    <dir name="SVN">
+     <dir name="Parser">
+      <dir name="XML">
+       <file baseinstalldir="/" name="Info.php" role="php">
+        <tasks:replace from="@version@" to="version" type="package-info" />
+       </file>
+       <file baseinstalldir="/" name="List.php" role="php">
+        <tasks:replace from="@version@" to="version" type="package-info" />
+       </file>
+       <file baseinstalldir="/" name="Log.php" role="php">
+        <tasks:replace from="@version@" to="version" type="package-info" />
+       </file>
+       <file baseinstalldir="/" name="Status.php" role="php">
+        <tasks:replace from="@version@" to="version" type="package-info" />
+       </file>
+      </dir> <!-- /SVN/Parser/XML -->
+      <file baseinstalldir="/" name="Exception.php" role="php">
        <tasks:replace from="@version@" to="version" type="package-info" />
       </file>
-      <file baseinstalldir="/VersionControl" name="List.php" role="php">
+      <file baseinstalldir="/" name="XML.php" role="php">
        <tasks:replace from="@version@" to="version" type="package-info" />
       </file>
-      <file baseinstalldir="/VersionControl" name="Log.php" role="php">
+     </dir> <!-- /SVN/Parser -->
+     <dir name="Command">
+      <file baseinstalldir="/" name="Add.php" role="php">
        <tasks:replace from="@version@" to="version" type="package-info" />
       </file>
-      <file baseinstalldir="/VersionControl" name="Status.php" role="php">
+      <file baseinstalldir="/" name="Blame.php" role="php">
        <tasks:replace from="@version@" to="version" type="package-info" />
       </file>
-     </dir> <!-- /SVN/Parser/XML -->
-     <file baseinstalldir="/VersionControl" name="Exception.php" role="php">
+      <file baseinstalldir="/" name="Cat.php" role="php">
+       <tasks:replace from="@version@" to="version" type="package-info" />
+      </file>
+      <file baseinstalldir="/" name="Changelist.php" role="php">
+       <tasks:replace from="@version@" to="version" type="package-info" />
+      </file>
+      <file baseinstalldir="/" name="Checkout.php" role="php">
+       <tasks:replace from="@version@" to="version" type="package-info" />
+      </file>
+      <file baseinstalldir="/" name="Cleanup.php" role="php">
+       <tasks:replace from="@version@" to="version" type="package-info" />
+      </file>
+      <file baseinstalldir="/" name="Commit.php" role="php">
+       <tasks:replace from="@version@" to="version" type="package-info" />
+      </file>
+      <file baseinstalldir="/" name="Copy.php" role="php">
+       <tasks:replace from="@version@" to="version" type="package-info" />
+      </file>
+      <file baseinstalldir="/" name="Delete.php" role="php">
+       <tasks:replace from="@version@" to="version" type="package-info" />
+      </file>
+      <file baseinstalldir="/" name="Diff.php" role="php">
+       <tasks:replace from="@version@" to="version" type="package-info" />
+      </file>
+      <file baseinstalldir="/" name="Export.php" role="php">
+       <tasks:replace from="@version@" to="version" type="package-info" />
+      </file>
+      <file baseinstalldir="/" name="Import.php" role="php">
+       <tasks:replace from="@version@" to="version" type="package-info" />
+      </file>
+      <file baseinstalldir="/" name="Info.php" role="php">
+       <tasks:replace from="@version@" to="version" type="package-info" />
+      </file>
+      <file baseinstalldir="/" name="List.php" role="php">
+       <tasks:replace from="@version@" to="version" type="package-info" />
+      </file>
+      <file baseinstalldir="/" name="Log.php" role="php">
+       <tasks:replace from="@version@" to="version" type="package-info" />
+      </file>
+      <file baseinstalldir="/" name="Merge.php" role="php">
+       <tasks:replace from="@version@" to="version" type="package-info" />
+      </file>
+      <file baseinstalldir="/" name="Mkdir.php" role="php">
+       <tasks:replace from="@version@" to="version" type="package-info" />
+      </file>
+      <file baseinstalldir="/" name="Move.php" role="php">
+       <tasks:replace from="@version@" to="version" type="package-info" />
+      </file>
+      <file baseinstalldir="/" name="Propdel.php" role="php">
+       <tasks:replace from="@version@" to="version" type="package-info" />
+      </file>
+      <file baseinstalldir="/" name="Propget.php" role="php">
+       <tasks:replace from="@version@" to="version" type="package-info" />
+      </file>
+      <file baseinstalldir="/" name="Proplist.php" role="php">
+       <tasks:replace from="@version@" to="version" type="package-info" />
+      </file>
+      <file baseinstalldir="/" name="Propset.php" role="php">
+       <tasks:replace from="@version@" to="version" type="package-info" />
+      </file>
+      <file baseinstalldir="/" name="Resolved.php" role="php">
+       <tasks:replace from="@version@" to="version" type="package-info" />
+      </file>
+      <file baseinstalldir="/" name="Revert.php" role="php">
+       <tasks:replace from="@version@" to="version" type="package-info" />
+      </file>
+      <file baseinstalldir="/" name="Status.php" role="php">
+       <tasks:replace from="@version@" to="version" type="package-info" />
+      </file>
+      <file baseinstalldir="/" name="Switch.php" role="php">
+       <tasks:replace from="@version@" to="version" type="package-info" />
+      </file>
+      <file baseinstalldir="/" name="Update.php" role="php">
+       <tasks:replace from="@version@" to="version" type="package-info" />
+      </file>
+     </dir> <!-- /SVN/Command -->
+     <file baseinstalldir="/" name="Command.php" role="php">
       <tasks:replace from="@version@" to="version" type="package-info" />
      </file>
-     <file baseinstalldir="/VersionControl" name="XML.php" role="php">
+     <file baseinstalldir="/" name="Exception.php" role="php">
       <tasks:replace from="@version@" to="version" type="package-info" />
      </file>
-    </dir> <!-- /SVN/Parser -->
-    <dir name="Command">
-     <file baseinstalldir="/VersionControl" name="Add.php" role="php">
-      <tasks:replace from="@version@" to="version" type="package-info" />
-     </file>
-     <file baseinstalldir="/VersionControl" name="Blame.php" role="php">
-      <tasks:replace from="@version@" to="version" type="package-info" />
-     </file>
-     <file baseinstalldir="/VersionControl" name="Cat.php" role="php">
-      <tasks:replace from="@version@" to="version" type="package-info" />
-     </file>
-     <file baseinstalldir="/VersionControl" name="Changelist.php" role="php">
-      <tasks:replace from="@version@" to="version" type="package-info" />
-     </file>
-     <file baseinstalldir="/VersionControl" name="Checkout.php" role="php">
-      <tasks:replace from="@version@" to="version" type="package-info" />
-     </file>
-     <file baseinstalldir="/VersionControl" name="Cleanup.php" role="php">
-      <tasks:replace from="@version@" to="version" type="package-info" />
-     </file>
-     <file baseinstalldir="/VersionControl" name="Commit.php" role="php">
-      <tasks:replace from="@version@" to="version" type="package-info" />
-     </file>
-     <file baseinstalldir="/VersionControl" name="Copy.php" role="php">
-      <tasks:replace from="@version@" to="version" type="package-info" />
-     </file>
-     <file baseinstalldir="/VersionControl" name="Delete.php" role="php">
-      <tasks:replace from="@version@" to="version" type="package-info" />
-     </file>
-     <file baseinstalldir="/VersionControl" name="Diff.php" role="php">
-      <tasks:replace from="@version@" to="version" type="package-info" />
-     </file>
-     <file baseinstalldir="/VersionControl" name="Export.php" role="php">
-      <tasks:replace from="@version@" to="version" type="package-info" />
-     </file>
-     <file baseinstalldir="/VersionControl" name="Import.php" role="php">
-      <tasks:replace from="@version@" to="version" type="package-info" />
-     </file>
-     <file baseinstalldir="/VersionControl" name="Info.php" role="php">
-      <tasks:replace from="@version@" to="version" type="package-info" />
-     </file>
-     <file baseinstalldir="/VersionControl" name="List.php" role="php">
-      <tasks:replace from="@version@" to="version" type="package-info" />
-     </file>
-     <file baseinstalldir="/VersionControl" name="Log.php" role="php">
-      <tasks:replace from="@version@" to="version" type="package-info" />
-     </file>
-     <file baseinstalldir="/VersionControl" name="Merge.php" role="php">
-      <tasks:replace from="@version@" to="version" type="package-info" />
-     </file>
-     <file baseinstalldir="/VersionControl" name="Mkdir.php" role="php">
-      <tasks:replace from="@version@" to="version" type="package-info" />
-     </file>
-     <file baseinstalldir="/VersionControl" name="Move.php" role="php">
-      <tasks:replace from="@version@" to="version" type="package-info" />
-     </file>
-     <file baseinstalldir="/VersionControl" name="Propdel.php" role="php">
-      <tasks:replace from="@version@" to="version" type="package-info" />
-     </file>
-     <file baseinstalldir="/VersionControl" name="Propget.php" role="php">
-      <tasks:replace from="@version@" to="version" type="package-info" />
-     </file>
-     <file baseinstalldir="/VersionControl" name="Proplist.php" role="php">
-      <tasks:replace from="@version@" to="version" type="package-info" />
-     </file>
-     <file baseinstalldir="/VersionControl" name="Propset.php" role="php">
-      <tasks:replace from="@version@" to="version" type="package-info" />
-     </file>
-     <file baseinstalldir="/VersionControl" name="Resolved.php" role="php">
-      <tasks:replace from="@version@" to="version" type="package-info" />
-     </file>
-     <file baseinstalldir="/VersionControl" name="Revert.php" role="php">
-      <tasks:replace from="@version@" to="version" type="package-info" />
-     </file>
-     <file baseinstalldir="/VersionControl" name="Status.php" role="php">
-      <tasks:replace from="@version@" to="version" type="package-info" />
-     </file>
-     <file baseinstalldir="/VersionControl" name="Switch.php" role="php">
-      <tasks:replace from="@version@" to="version" type="package-info" />
-     </file>
-     <file baseinstalldir="/VersionControl" name="Update.php" role="php">
-      <tasks:replace from="@version@" to="version" type="package-info" />
-     </file>
-    </dir> <!-- /SVN/Command -->
-    <file baseinstalldir="/VersionControl" name="Command.php" role="php">
+    </dir> <!-- /SVN -->
+    <file baseinstalldir="/" name="SVN.php" role="php">
      <tasks:replace from="@version@" to="version" type="package-info" />
     </file>
-    <file baseinstalldir="/VersionControl" name="Exception.php" role="php">
-     <tasks:replace from="@version@" to="version" type="package-info" />
-    </file>
-   </dir> <!-- /SVN -->
-   <file baseinstalldir="/VersionControl" name="SVN.php" role="php">
-    <tasks:replace from="@version@" to="version" type="package-info" />
-   </file>
-  </dir> <!-- / -->
+   </dir> <!-- / -->
+  </dir>
  </contents>
  <dependencies>
   <required>
    <php>
-    <min>5.2.0</min>
+    <min>5.3.0</min>
    </php>
    <pearinstaller>
-    <min>1.4.0b1</min>
+    <min>1.9.4</min>
    </pearinstaller>
    <package>
     <name>PEAR</name>
@@ -224,6 +214,56 @@ VersionControl_SVN is tested against Subversion 1.6.3</description>
  </dependencies>
  <phprelease />
  <changelog>
+  <release>
+   <version>
+    <release>0.5.0</release>
+    <api>0.5.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>beta</api>
+   </stability>
+   <date>2012-11-19</date>
+   <license>BSD License</license>
+   <notes>
+* Fix Bug #18130: Problems with executing checkout [mrook]
+ * Fix Bug #19465: username/password isn&apos;t handled like described in
+ * documentation [mrook]
+ * Implement Feature #18635: Add support for changelist command and
+ * arguments [mrook]
+ * Implement Feature #18956: Add support for --trust-server-cert switch
+ * [mrook]
+ * Implement Feature #19388: Support for --xml Flag in Info [mrook]
+ * Implement Feature #19464: Move command handling in new class [mrook]
+ * Implement Feature #19470: Convert
+ * VersionControl_SVN_Comand_List::parseOutputArray into xml parser [mrook]
+ * Implement Feature #19472: Use Exceptions instead of PEAR_Error [mrook]
+ * Implement Feature #19484: Use XMLReader instead of PEAR::XML_Parser
+ * [mrook]
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.4.0</release>
+    <api>0.4.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>beta</api>
+   </stability>
+   <date>2011-10-14</date>
+   <license>BSD License</license>
+   <notes>
+* Fix Bug #16639: PHP &quot;Error return value of new by reference is deprecated&quot; [mrook]
+ * Fix Bug #17335: E_DEPRECATED is triggered [mrook]
+ * Fix Bug #18010: Determine svn location automatically [mrook]
+ * Fix Bug #18472: Need to add --non-interactive [mrook]
+ * Fix Bug #18713: Move Command doesn&apos;t need a Message [mrook]
+ * Fix Bug #18715: Copy command requires message switch [mrook]
+ * Implement Feature #18028: Better support for --ignore-externals option [mrook]
+ * Implement Feature #18623: Add xml output switch [mrook]
+   </notes>
+  </release>
   <release>
    <version>
     <release>0.3.4</release>
