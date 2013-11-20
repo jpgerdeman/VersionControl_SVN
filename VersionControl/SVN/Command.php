@@ -89,6 +89,13 @@ abstract class VersionControl_SVN_Command
      * @var string $binaryPath
      */
     public $binaryPath = '/usr/local/bin/svn';
+    
+    /**
+     * Used for custom or alternative installations of the svn executable.
+     * 
+     * @var string $customBinaryPath
+     */
+	public $customBinaryPath = null;
 
     /**
      * String to prepend to command string. Helpful for setting exec()
@@ -449,10 +456,7 @@ abstract class VersionControl_SVN_Command
      */
     public function run($args = array(), $switches = array())
     {
-        if (!file_exists($this->binaryPath)) {
-            $system = new System();
-            $this->binaryPath = $system->which('svn');
-        }
+        $this->binaryPath = $this->getBinaryPath();
 
         if (sizeof($switches) > 0) {
             $this->switches = $switches;
@@ -548,5 +552,43 @@ abstract class VersionControl_SVN_Command
             break;
         }
     }
+    
+    
+	/**
+	 * Define the path to the svn executable.
+	 * 
+	 * This is useful if:
+	 * 
+	 *  - the systemwide binary cannot be used
+	 *  - a binary cannot be installed
+	 *  - a compatible implementation by another name is used
+	 * 
+	 * @param string $path
+	 */
+	public function setSVNBinary($path)
+	{
+		$this->customBinaryPath = $path;
+	}
+	
+	/**
+	 * Get the binary path to use for the command.
+	 * 
+	 * @return string
+	 */
+	protected function getBinaryPath()
+	{
+		if( !is_null($this->customBinaryPath) )
+		{
+			return $this->customBinaryPath;
+		}		
+		elseif (!file_exists($this->binaryPath)) {
+            $system = new System();
+            return $system->which('svn');
+        }
+		else
+		{
+			return $this->binaryPath;
+		}		
+	}
 }
 ?>
