@@ -92,6 +92,24 @@ class VersionControl_SVN_Parser_XML_Status
                                 ),
                                 'repos-status' => array(
                                     'attribute' => array('item', 'props'),
+									'path' => array(
+										'lock' => array(
+											'path' => array(
+                                                'token' => array(
+                                                    'config' => 'string',
+                                                ),
+                                                'owner' => array(
+                                                    'config' => 'string',
+                                                ),
+                                                'comment' => array(
+                                                    'config' => 'string',
+                                                ),
+                                                'created' => array(
+                                                    'config' => 'string',
+                                                ),
+											),
+										),
+									),
                                 ),
                             ),
                         ),
